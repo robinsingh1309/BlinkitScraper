@@ -21,7 +21,7 @@ public class BlinkitDemo {
 //		File blinkitDataFilePath = new File(desiredRelativePath);
 //	    
 //		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//		
+
 //	    try	
 //		{
 //	    	SpreadsheetWriter writer = new XlsxWriter();
