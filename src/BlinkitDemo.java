@@ -45,7 +45,7 @@ public class BlinkitDemo {
 
 		List<List<Product>> productItemLists = paginatedInfo.getInfoFromEveryPageUrl();
 
-		String filePath = "/home/robin/eclipse-workspace/Blinkit/src/blinkit_data.xlsx";
+		String filePath = "/home/robin/eclipse-workspace/Blinkit/src/csv_data/blinkit_data.xlsx";
 		
 		// Create workbook
 		XSSFWorkbook workbook = new XSSFWorkbook();
