@@ -12,32 +12,6 @@ import BlinkitScraper.Product;
 public class BlinkitDemo {
 
 	public static void main(String[] args) throws IOException {
-
-//		BlinkitPagination paginatedInfo = new BlinkitPagination();
-//
-//		List<List<Product>> productItemLists = paginatedInfo.getInfoFromEveryPage();
-//
-//		String desiredRelativePath = "/home/robin/eclipse-workspace/Blinkit/src/blinkit_data.xlsx";
-//		File blinkitDataFilePath = new File(desiredRelativePath);
-//	    
-//		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-//	    try	
-//		{
-//	    	SpreadsheetWriter writer = new XlsxWriter();
-//	    	
-//			for(List<Product> product : productItemLists) 
-//			{
-//				writer.addSheet(Product.class, product, "product");
-//			}
-//			
-//			writer.write(outputStream);
-//			
-//		
-//		}catch (Exception e) {
-//			System.out.println("Error occured while parsing the value to the File");
-//		}
-		
 		
 		System.out.println("Processed Starting");
 		
@@ -45,7 +19,7 @@ public class BlinkitDemo {
 
 		List<List<Product>> productItemLists = paginatedInfo.getInfoFromEveryPageUrl();
 
-		String filePath = "/home/robin/eclipse-workspace/Blinkit/src/csv_data/blinkit_data.xlsx";
+		String filePath = "/home/robin/eclipse-workspace/BlinkitScraper/src/csv_data/blinkit_data.xlsx";
 		
 		// Create workbook
 		XSSFWorkbook workbook = new XSSFWorkbook();
@@ -68,10 +42,12 @@ public class BlinkitDemo {
 
 		            XSSFRow headerRow = sheet.createRow(0);
 
-		            headerRow.createCell(0).setCellValue("Product Name");
+		            headerRow.createCell(0).setCellValue("Name");
 		            headerRow.createCell(1).setCellValue("Category");
 		            headerRow.createCell(2).setCellValue("Original MRP");
 		            headerRow.createCell(3).setCellValue("Blinkit MRP");
+		            headerRow.createCell(4).setCellValue("Image");
+		            headerRow.createCell(5).setCellValue("Brand");
 		        }
 
 		        // Finding the next empty row
@@ -84,6 +60,8 @@ public class BlinkitDemo {
 		        row.createCell(1).setCellValue(item.getProduct_category());
 		        row.createCell(2).setCellValue(item.getProduct_original_mrp());
 		        row.createCell(3).setCellValue(item.getProduct_normal_mrp());
+		        row.createCell(4).setCellValue(item.getProduct_image());
+		        row.createCell(5).setCellValue(item.getProduct_brand());
 		    }
 		}
 

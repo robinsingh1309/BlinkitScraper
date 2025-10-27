@@ -53,8 +53,8 @@ public class BlinkitPagination {
         for(List<String> valuesOfL0AndL1 : finalExtractedCategoryL0AndL1Value) 
         {
         	
-        	String l0_value = valuesOfL0AndL1.get(1);    // extracting l0_cat value present in the valuesOfL0AndL1 list
-        	String l1_value = valuesOfL0AndL1.get(3);    // extracting l1_cat value present in the valuesOfL0AndL1 list
+        	String l0_value = valuesOfL0AndL1.get(1);    // extracting l0_cat value present in the valuesOfL0AndL1 list i.e, the output or element is stored in the form of { {l0_cat, 25, l1_cat, 36} , {.....} }
+        	String l1_value = valuesOfL0AndL1.get(3);    // extracting l1_cat value present in the valuesOfL0AndL1 list i.e, the output or element is stored in the form of { {l0_cat, 25, l1_cat, 36} , {.....} }
         	
         	/**
         	 * Used the concept of String.format where i don't need to traverse the url fully 
@@ -86,15 +86,15 @@ public class BlinkitPagination {
 		        }
 	
 				// Breaking if there is no next page or the url is empty
-				if (urlToBeScrapped == null || urlToBeScrapped.isEmpty()) {
+				if (urlToBeScrapped == null || urlToBeScrapped.isBlank()) {
 					break;
 				}
 				
 			}
 			
-			// Add random delay (2–5 seconds) before moving to next category
+			// Add random delay (1–4 seconds) before moving to next category
 		    try {
-		        Thread.sleep(2000 + (long)(Math.random() * 2000));
+		        Thread.sleep(1000 + (long)(Math.random() * 2000));
 		    } catch (InterruptedException e) {
 		        Thread.currentThread().interrupt();
 		    }
