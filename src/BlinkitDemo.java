@@ -19,9 +19,9 @@ public class BlinkitDemo {
 
 		List<List<Product>> productItemLists = paginatedInfo.getInfoFromEveryPageUrl();
 
-		String filePath = "/home/robin/eclipse-workspace/BlinkitScraper/src/csv_data/blinkit_data.xlsx";
+		String filePath = "/home/robin/eclipse-workspace/BlinkitScraper/src/csv_data/blinkit_product_bean.xlsx";
+
 		
-		// Create workbook
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
 		for (List<Product> products : productItemLists) {
@@ -30,10 +30,6 @@ public class BlinkitDemo {
 		        
 		        String categoryName = item.getProduct_category();
 
-		        /**
-		         * Create or Get the sheet
-		         * This is important logic to create different sheet
-		         */
 		        XSSFSheet sheet = workbook.getSheet(categoryName);
 		        
 		        if (sheet == null) {
@@ -42,12 +38,14 @@ public class BlinkitDemo {
 
 		            XSSFRow headerRow = sheet.createRow(0);
 
-		            headerRow.createCell(0).setCellValue("Name");
-		            headerRow.createCell(1).setCellValue("Category");
-		            headerRow.createCell(2).setCellValue("Original MRP");
-		            headerRow.createCell(3).setCellValue("Blinkit MRP");
-		            headerRow.createCell(4).setCellValue("Image");
-		            headerRow.createCell(5).setCellValue("Brand");
+		            headerRow.createCell(0).setCellValue("Product_Type");
+		            headerRow.createCell(1).setCellValue("Name");
+		            headerRow.createCell(2).setCellValue("Description");
+	                headerRow.createCell(3).setCellValue("Image_URL");
+	                headerRow.createCell(4).setCellValue("Brand");
+//		            headerRow.createCell(5).setCellValue("Original MRP");
+//		            headerRow.createCell(6).setCellValue("Blinkit MRP");
+
 		        }
 
 		        // Finding the next empty row
@@ -56,12 +54,14 @@ public class BlinkitDemo {
 		        // Write in row
 		        XSSFRow row = sheet.createRow(rowNum);
 		        
-		        row.createCell(0).setCellValue(item.getProduct_name());
-		        row.createCell(1).setCellValue(item.getProduct_category());
-		        row.createCell(2).setCellValue(item.getProduct_original_mrp());
-		        row.createCell(3).setCellValue(item.getProduct_normal_mrp());
-		        row.createCell(4).setCellValue(item.getProduct_image());
-		        row.createCell(5).setCellValue(item.getProduct_brand());
+		        row.createCell(0).setCellValue(item.getProduct_category());
+		        row.createCell(1).setCellValue(item.getProduct_name());
+		        row.createCell(2).setCellValue("N/A");
+		        row.createCell(3).setCellValue(item.getProduct_image());
+		        row.createCell(4).setCellValue(item.getProduct_brand());
+//		        row.createCell(5).setCellValue(item.getProduct_original_mrp());
+//		        row.createCell(6).setCellValue(item.getProduct_normal_mrp());
+                
 		    }
 		}
 

@@ -52,31 +52,31 @@ public class ExtractData {
 			JSONObject jsonDataObject = jsonIterateObject.getJSONObject("data");
 			
 			
-	        if (!jsonDataObject.has("image")) continue;  // extracting the image URL
-	        String productImage = jsonDataObject.getJSONObject("image").optString("url", "N/A");    // if url not present fill it with value as "N/A"
+	        if (!jsonDataObject.has("image")) continue;
+	        String productImage = jsonDataObject.getJSONObject("image").optString("url", "");
 
 	        
-			if (!jsonDataObject.has("name")) continue;  // basically means if the JSON Object with 'name' is present or not in the 'data' JSON Object
-			String productName = jsonDataObject.getJSONObject("name").optString("text", "");    // if not present we can fill the value as empty string("")
+			if (!jsonDataObject.has("name")) continue;  
+			String productName = jsonDataObject.getJSONObject("name").optString("text", "");
 			
 
 			String productOriginalMrpPrice = "";
-			if (jsonDataObject.has("mrp")) 	// basically means if the JSON Object with 'mrp' is present or not in the 'data' JSON Object
-				productOriginalMrpPrice = jsonDataObject.getJSONObject("mrp").optString("text", "N/A");
+			if (jsonDataObject.has("mrp"))
+				productOriginalMrpPrice = jsonDataObject.getJSONObject("mrp").optString("text", "");
 			
 			
 			String productNormalMrpPrice = "";
-			if (jsonDataObject.has("normal_price"))		// basically means if the JSON Object with 'normal_price' is present or not in the 'data' JSON Object
-				productNormalMrpPrice = jsonDataObject.getJSONObject("normal_price").optString("text", "N/A");
+			if (jsonDataObject.has("normal_price"))
+				productNormalMrpPrice = jsonDataObject.getJSONObject("normal_price").optString("text", "");
 			
 			
 	        String productBrand = "";
-	        if (jsonDataObject.has("brand_name"))     // basically means if the JSON Object with 'brand_name' is present or not in the 'data' JSON Object
-	            productBrand = jsonDataObject.getJSONObject("brand_name").optString("text", "N/A");
+	        if (jsonDataObject.has("brand_name"))
+	            productBrand = jsonDataObject.getJSONObject("brand_name").optString("text", "");
 			
 			
 			String productCategory = "";
-			if (jsonIterateObject.has("tracking")) 		// basically means if the JSON Object with 'tracking' is present or not in the 'response' JSON Object
+			if (jsonIterateObject.has("tracking"))
 			{
 				JSONObject jsonTrackingObject = jsonIterateObject.getJSONObject("tracking");
 				

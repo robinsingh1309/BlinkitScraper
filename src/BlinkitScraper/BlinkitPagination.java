@@ -21,10 +21,8 @@ public class BlinkitPagination {
         String jsonCategoryResponse = blinkitScraper.getTemplateJSONDataForUCategoryURL(urlToScrapeFromEveryPage);
         
         // separated the class to extract the deeplinks of different categories
-        categoriesProductUrl = BlinkitCategoryUrlGeneratorFactory.generateDeeplinkUri(jsonCategoryResponse);
-	    // System.out.println(categoriesProductUrl.toString());
-        
-        
+        categoriesProductUrl = BlinkitCategoryUrlGeneratorFactory.generateDeeplinkUri(jsonCategoryResponse);	  
+                
         /**
          * Extracting the l0_cat and l1_cat values
          */
@@ -32,14 +30,10 @@ public class BlinkitPagination {
         
         for(String url : categoriesProductUrl)
         {
-        	// given the task to other class to give me the result
-        	List<String> res = L0AndL1CategoryValueExtractor.getQueryParams(url);
+            List<String> res = L0AndL1CategoryValueExtractor.getQueryParams(url);
         	
         	finalExtractedCategoryL0AndL1Value.add(res);
         }
-        // Testing the values are giving or not
-        // System.out.println(finalExtractedCategoryL0AndL1Value.toString());
-        
         
         /**
          * Now this will be responsible for generating all the data from the different categories
@@ -55,16 +49,8 @@ public class BlinkitPagination {
         	
         	String l0_value = valuesOfL0AndL1.get(1);    // extracting l0_cat value present in the valuesOfL0AndL1 list i.e, the output or element is stored in the form of { {l0_cat, 25, l1_cat, 36} , {.....} }
         	String l1_value = valuesOfL0AndL1.get(3);    // extracting l1_cat value present in the valuesOfL0AndL1 list i.e, the output or element is stored in the form of { {l0_cat, 25, l1_cat, 36} , {.....} }
-        	
-        	/**
-        	 * Used the concept of String.format where i don't need to traverse the url fully 
-        	 * just introduce the new value and that's it 
-        	 * new url will be generated
-        	 */
+        	 
         	String urlToBeScrapped = String.format(BlinkitScraperUrl.BLINKIT_PRODUCT_URL.getValue(), l0_value, l1_value);
-        	// to test whether the values are replaced or not
-        	//System.out.println(urlToBeScrapped);
-        	
         	
         	/**
         	 * The below method is for pagination logic
@@ -80,7 +66,7 @@ public class BlinkitPagination {
 				urlToBeScrapped = productItemsPageResult.getNxtURL();
 				
 				try {
-		            Thread.sleep(1000 + (long)(Math.random() * 2000));
+		            Thread.sleep(1000 + (long)(Math.random() * 3000));
 		        } catch (InterruptedException e) {
 		            Thread.currentThread().interrupt();
 		        }
@@ -92,9 +78,9 @@ public class BlinkitPagination {
 				
 			}
 			
-			// Add random delay (1–4 seconds) before moving to next category
+			// Add random delay (1–5 seconds) before moving to next category
 		    try {
-		        Thread.sleep(1000 + (long)(Math.random() * 2000));
+		        Thread.sleep(2000 + (long)(Math.random() * 2000));
 		    } catch (InterruptedException e) {
 		        Thread.currentThread().interrupt();
 		    }
